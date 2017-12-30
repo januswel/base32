@@ -1,9 +1,7 @@
 // @flow
 
 import assert from 'assert'
-
-const BIT_MASK = 0b11111
-const mask = (n, digit) => (n & (BIT_MASK << digit)) >>> digit
+import { shiftLeft, shiftRight } from './bit-shift'
 
 /**
  * '9a': 8bit
@@ -13,19 +11,16 @@ const CHUNK_SIZE = 10
 const TABLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
 const ENCODING_UNIT = CHUNK_SIZE / 2
 const PADDING_CHARACTER = '='
+const BIT_MASK = 0b11111
 
 const encodeChunk = (chunk: HexString) => {
   const encoded = []
-  const leftShiftWidth = (CHUNK_SIZE - chunk.length) * 4
-  const numofPadded = Math.floor(leftShiftWidth / ENCODING_UNIT)
-  const n = parseInt(chunk, 16) * Math.pow(2, leftShiftWidth)
+  const shiftWidth = (CHUNK_SIZE - chunk.length) * 4
+  const numofPadded = Math.floor(shiftWidth / ENCODING_UNIT)
+  const n = shiftLeft(parseInt(chunk, 16), shiftWidth)
   for (let i = 7; numofPadded <= i; --i) {
-    const rightShiftWidth = i * ENCODING_UNIT
-    let shifted = n
-    for (let j = 0; j < rightShiftWidth; ++j) {
-      shifted = Math.floor(shifted / 2)
-    }
-    encoded.push(TABLE[shifted & BIT_MASK])
+    const index = shiftRight(n, i * ENCODING_UNIT) & BIT_MASK
+    encoded.push(TABLE[index])
   }
   for (let i = 0; i < numofPadded; ++i) {
     encoded.push(PADDING_CHARACTER)
