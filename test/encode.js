@@ -12,18 +12,18 @@ describe('encode', () => {
     assert.throws(() => encode('4ac'), AssertionError)
   })
   it('encodes 10 digits hex string to 8 chracters Base32 string', () => {
-    assert('SA2FM6EQ' === encode('1234567890'))
+    assert('CI2FM6EQ' === encode('1234567890'))
   })
   it('encodes 12 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQVA======' === encode('1234567890ab'))
+    assert('CI2FM6EQVM======' === encode('1234567890ab'))
   })
   it('encodes 14 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADGQ====' === encode('1234567890abcd'))
+    assert('CI2FM6EQVPGQ====' === encode('1234567890abcd'))
   })
   it('encodes 16 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADG66===' === encode('1234567890abcdef'))
+    assert('CI2FM6EQVPG66===' === encode('1234567890abcdef'))
   })
   it('encodes 18 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADG66EQ=' === encode('1234567890abcdef12'))
+    assert('CI2FM6EQVPG66EQ=' === encode('1234567890abcdef12'))
   })
 })

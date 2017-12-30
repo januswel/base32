@@ -16,11 +16,16 @@ const PADDING_CHARACTER = '='
 
 const encodeChunk = (chunk: HexString) => {
   const encoded = []
-  const shiftWidth = (CHUNK_SIZE - chunk.length) * 4
-  const numofPadded = Math.floor(shiftWidth / ENCODING_UNIT)
-  const n = parseInt(chunk, 16) << shiftWidth
+  const leftShiftWidth = (CHUNK_SIZE - chunk.length) * 4
+  const numofPadded = Math.floor(leftShiftWidth / ENCODING_UNIT)
+  const n = parseInt(chunk, 16) * Math.pow(2, leftShiftWidth)
   for (let i = 7; numofPadded <= i; --i) {
-    encoded.push(TABLE[mask(n, i * ENCODING_UNIT)])
+    const rightShiftWidth = i * ENCODING_UNIT
+    let shifted = n
+    for (let j = 0; j < rightShiftWidth; ++j) {
+      shifted = Math.floor(shifted / 2)
+    }
+    encoded.push(TABLE[shifted & BIT_MASK])
   }
   for (let i = 0; i < numofPadded; ++i) {
     encoded.push(PADDING_CHARACTER)
