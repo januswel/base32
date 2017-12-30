@@ -8,7 +8,7 @@ import { shiftLeft, shiftRight } from '../src/bit-shift'
 
 describe('shiftLeft', () => {
   it('throws when digits is larger or equal than 64', () => {
-    assert.throws(() => shiftLeft(100), AssertionError)
+    assert.throws(() => shiftLeft(1, 100), AssertionError)
   })
   it('returns left shifted numbers', () => {
     assert(2 === shiftLeft(1, 1))
@@ -19,7 +19,7 @@ describe('shiftLeft', () => {
 
 describe('shiftRight', () => {
   it('throws when digits is larger or equal than 64', () => {
-    assert.throws(() => shiftLeft(100), AssertionError)
+    assert.throws(() => shiftRight(1, 100), AssertionError)
   })
   it('returns right shifted numbers', () => {
     assert(0 === shiftRight(1, 1))

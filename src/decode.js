@@ -6,9 +6,9 @@ import { shiftLeft, shiftRight } from './bit-shift'
 const CHUNK_SIZE = 8
 const TABLE = (() => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'.split('')
-  const table = new Map()
+  const table = {}
   characters.forEach((character, index) => {
-    table.set(character, index)
+    table[character] = index
   })
   return table
 })()
@@ -21,7 +21,7 @@ const decodeChunk = (chunk: Base32String) => {
       ++numofPaddingCharacters
       return sum
     }
-    const current = TABLE.get(character)
+    const current = TABLE[character]
     sum += shiftLeft(current, (7 - index) * 5)
     return sum
   }, 0)
