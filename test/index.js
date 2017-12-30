@@ -7,7 +7,10 @@ import { encode, decode } from '../src'
 
 describe('encode', () => {
   it('encodes hex string to Base32 string', () => {
-    assert('GEZDGNBVGY3TQOJQMFRGGZDFMY======' === encode('1234567890abcdef'))
+    assert('SA2FM6EQ' === encode('1234567890'))
+  })
+  it('encodes hex string to Base32 string', () => {
+    assert('SA2FM6EQADG6===' === encode('1234567890abcdef'))
   })
 })
 
