@@ -1,5 +1,7 @@
 // @flow
 
+import assert from 'assert'
+
 const BIT_MASK = 0b11111
 const mask = (n, digit) => (n & (BIT_MASK << digit)) >>> digit
 
@@ -30,6 +32,11 @@ const encodeChunk = (chunk: HexString) => {
 }
 
 const encode = (src: HexString): Base32String => {
+  assert(
+    src.length % 2 === 0 && /^[0-9a-fA-F]+$/.test(src),
+    'src must be a hex string',
+  )
+
   const numofChunks = Math.ceil(src.length / CHUNK_SIZE)
   const fractions = src.length % CHUNK_SIZE
   const numofCharactersLast = fractions === 0 ? CHUNK_SIZE : fractions

@@ -1,4 +1,16 @@
 {
   "plugins": ["transform-flow-strip-types"],
-  "presets": ["es2015", "power-assert"]
+  "presets": ["es2015"],
+  "env": {
+    "development": {
+      "presets": [
+        "power-assert"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "unassert"
+      ]
+    }
+  }
 }

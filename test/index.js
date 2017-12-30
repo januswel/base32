@@ -2,10 +2,15 @@
 
 import { describe, it } from 'kocha'
 import assert from 'assert'
+const AssertionError = assert.AssertionError
 
 import { encode, decode } from '../src'
 
 describe('encode', () => {
+  it('throws when non hex string', () => {
+    assert.throws(() => encode('td'), AssertionError)
+    assert.throws(() => encode('4ac'), AssertionError)
+  })
   it('encodes 10 digits hex string to 8 chracters Base32 string', () => {
     assert('SA2FM6EQ' === encode('1234567890'))
   })
