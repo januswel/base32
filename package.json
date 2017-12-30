@@ -17,6 +17,7 @@
     "babel-register": "^6.26.0",
     "flow-bin": "^0.62.0",
     "kocha": "^1.9.1",
-    "power-assert": "^1.4.4"
+    "power-assert": "^1.4.4",
+    "prettier": "^1.9.2"
   }
 }

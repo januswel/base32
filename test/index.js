@@ -1,6 +1,6 @@
 // @flow
 
-import {describe, it} from 'kocha'
+import { describe, it } from 'kocha'
 import assert from 'assert'
 
 describe('index', () => {
