@@ -1,0 +1,11 @@
+{
+  "name": "base32-hex",
+  "version": "0.0.1",
+  "description": "Base32 encoder/decoder for hex string",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "januswel <janus.wel.3@gmail.com>",
+  "license": "MIT"
+}
