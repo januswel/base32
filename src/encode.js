@@ -2,6 +2,7 @@
 
 import assert from 'assert'
 import { shiftLeft, shiftRight } from './bit-shift'
+import type { HexString, Base32String } from './types.flow.js'
 
 /**
  * '9a': 8bit
