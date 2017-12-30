@@ -12,39 +12,47 @@ const mask = (n, digit) => (n & (MASK << digit)) >>> digit
  * */
 const NUMOF_PROCESSED_CHARACTERS = 10
 const TABLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'
+const ENCODING_UNIT = 5
 const PADDING_CHARACTER = '='
 
-const encode = (src: HexString): Base32String => {
-  const NUMOF_PROCESSES = Math.ceil(src.length / NUMOF_PROCESSED_CHARACTERS)
-  const FRACTIONS = src.length % NUMOF_PROCESSED_CHARACTERS
-  const NUMOF_CHARACTERS_LAST =
-    FRACTIONS === 0 ? NUMOF_PROCESSED_CHARACTERS : FRACTIONS
-
+const encodeChunk = (chunk: HexString) => {
   const encoded = []
-  for (let i = 0; i < NUMOF_PROCESSES; ++i) {
-    const start = i * NUMOF_PROCESSED_CHARACTERS
-    const chunk = src.slice(
-      start,
-      i === NUMOF_PROCESSES - 1
-        ? start + NUMOF_CHARACTERS_LAST
-        : start + NUMOF_PROCESSED_CHARACTERS,
-    )
-
-    const shiftWidth = (10 - chunk.length) * 4
-    const numofPadded = Math.floor(shiftWidth / 5)
-    const n = parseInt(chunk, 16) << shiftWidth
-    for (let j = 7; numofPadded < j; --j) {
-      encoded.push(TABLE[mask(n, j * 5)])
-    }
-    if (numofPadded === 0) {
-      encoded.push(TABLE[mask(n, 0)])
-    }
-    for (let j = 0; j < numofPadded; ++j) {
-      encoded.push(PADDING_CHARACTER)
-    }
+  const shiftWidth = (NUMOF_PROCESSED_CHARACTERS - chunk.length) * 4
+  const numofPadded = Math.floor(shiftWidth / ENCODING_UNIT)
+  const n = parseInt(chunk, 16) << shiftWidth
+  for (let j = 7; numofPadded < j; --j) {
+    encoded.push(TABLE[mask(n, j * ENCODING_UNIT)])
+  }
+  if (numofPadded === 0) {
+    encoded.push(TABLE[mask(n, 0)])
+  }
+  for (let j = 0; j < numofPadded; ++j) {
+    encoded.push(PADDING_CHARACTER)
   }
   return encoded.join('')
 }
+
+const encode = (src: HexString): Base32String => {
+  const numofProcesses = Math.ceil(src.length / NUMOF_PROCESSED_CHARACTERS)
+  const fractions = src.length % NUMOF_PROCESSED_CHARACTERS
+  const numofCharactersLast =
+    fractions === 0 ? NUMOF_PROCESSED_CHARACTERS : fractions
+
+  const encoded = []
+  for (let i = 0; i < numofProcesses; ++i) {
+    const start = i * NUMOF_PROCESSED_CHARACTERS
+    const chunk = src.slice(
+      start,
+      i === numofProcesses - 1
+        ? start + numofCharactersLast
+        : start + NUMOF_PROCESSED_CHARACTERS,
+    )
+
+    encoded.push(encodeChunk(chunk))
+  }
+  return encoded.join('')
+}
+
 const decode = (src: Base32String): HexString => '1234567890abcdef'
 
 export { encode, decode }
