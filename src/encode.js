@@ -19,13 +19,10 @@ const encodeChunk = (chunk: HexString) => {
   const shiftWidth = (CHUNK_SIZE - chunk.length) * 4
   const numofPadded = Math.floor(shiftWidth / ENCODING_UNIT)
   const n = parseInt(chunk, 16) << shiftWidth
-  for (let j = 7; numofPadded < j; --j) {
-    encoded.push(TABLE[mask(n, j * ENCODING_UNIT)])
+  for (let i = 7; numofPadded <= i; --i) {
+    encoded.push(TABLE[mask(n, i * ENCODING_UNIT)])
   }
-  if (numofPadded === 0) {
-    encoded.push(TABLE[mask(n, 0)])
-  }
-  for (let j = 0; j < numofPadded; ++j) {
+  for (let i = 0; i < numofPadded; ++i) {
     encoded.push(PADDING_CHARACTER)
   }
   return encoded.join('')

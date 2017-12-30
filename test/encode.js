@@ -15,15 +15,15 @@ describe('encode', () => {
     assert('SA2FM6EQ' === encode('1234567890'))
   })
   it('encodes 12 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQV======' === encode('1234567890ab'))
+    assert('SA2FM6EQVA======' === encode('1234567890ab'))
   })
   it('encodes 14 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADG====' === encode('1234567890abcd'))
+    assert('SA2FM6EQADGQ====' === encode('1234567890abcd'))
   })
   it('encodes 16 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADG6===' === encode('1234567890abcdef'))
+    assert('SA2FM6EQADG66===' === encode('1234567890abcdef'))
   })
   it('encodes 18 digits hex string to 16 chracters Base32 string', () => {
-    assert('SA2FM6EQADG66E=' === encode('1234567890abcdef12'))
+    assert('SA2FM6EQADG66EQ=' === encode('1234567890abcdef12'))
   })
 })
