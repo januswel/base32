@@ -1,6 +1,6 @@
 {
   "name": "base32-hex",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Base32 encoder/decoder for hex string",
   "main": "lib/index.js",
   "scripts": {
