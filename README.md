@@ -12,5 +12,5 @@ Usage
 import { encode, decode } from 'base32-hex'
 
 const encoded = encode('1a34ef794392')
-const decoded = decode('A3C9====')
+const decoded = decode('A3C7====')
 ```
