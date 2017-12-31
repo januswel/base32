@@ -1,5 +1,5 @@
 {
-  "name": "base32-hex",
+  "name": "@januswel/base32",
   "version": "0.0.2",
   "description": "Base32 encoder/decoder for hex string",
   "main": "lib/index.js",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository" : {
     "type" : "git",
-    "url" : "https://github.com/januswel/base32-hex"
+    "url" : "https://github.com/januswel/base32"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
