@@ -1,6 +1,6 @@
 {
   "name": "@januswel/base32",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Base32 encoder/decoder for hex string",
   "main": "lib/index.js",
   "scripts": {
