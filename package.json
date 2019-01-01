@@ -1,7 +1,13 @@
 {
   "name": "@januswel/base32",
-  "version": "0.0.3",
   "description": "Base32 encoder/decoder for hex string",
+  "author": "januswel <janus.wel.3@gmail.com>",
+  "version": "0.0.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/januswel/base32"
+  },
   "main": "lib/index.js",
   "scripts": {
     "prepack": "npm run prepack:babel && npm run prepack:flow",
@@ -9,12 +15,6 @@
     "prepack:flow": "flow-copy-source src lib",
     "test": "npm run type-check && mocha --require @babel/register test",
     "type-check": "flow"
-  },
-  "author": "januswel <janus.wel.3@gmail.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/januswel/base32"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
