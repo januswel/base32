@@ -1,12 +1,10 @@
-hex to/from Base32
-===
+# hex to/from Base32 v0.0.3
 
 compliant with RFC4648
 
 https://tools.ietf.org/html/rfc4648
 
-Usage
----
+## Usage
 
 ```js
 import { encode, decode } from 'base32-hex'

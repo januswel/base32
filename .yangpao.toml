@@ -1,0 +1,13 @@
+Current = "0.0.0"
+
+[[Files]]
+  Path = "README.md"
+  Prefix = "# hex to/from Base32 v"
+  Postfix = ""
+  IsNumber = false
+
+[[Files]]
+  Path = "package.json"
+  Prefix = "\"version\": \""
+  Postfix = "\","
+  IsNumber = false
