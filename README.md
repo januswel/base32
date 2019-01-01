@@ -1,4 +1,4 @@
-# hex to/from Base32 v0.0.3
+# hex to/from Base32 v0.0.4
 
 compliant with RFC4648
 
