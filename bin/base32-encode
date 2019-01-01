@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const version = require('../package.json').version
+const encode = require('../dist/encode').default
+
+program
+  .version(version, '-v, --version')
+  .action((target, options) => {
+    if (target.args && target.args.length === 0) {
+      console.error('Specify encoded string')
+      return
+    }
+    console.log(encode(target))
+  })
+  .parse(process.argv)

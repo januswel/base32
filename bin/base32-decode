@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const version = require('../package.json').version
+const decode = require('../dist/decode').default
+
+program
+  .version(version, '-v, --version')
+  .action((target, options) => {
+    if (target.args && target.args.length === 0) {
+      console.error('Specify decoded string')
+      return
+    }
+    console.log(decode(target))
+  })
+  .parse(process.argv)

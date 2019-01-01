@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+const version = require('../package.json').version
+
+program
+  .version(version, '-v, --version')
+  .command('encode [target]', 'encode')
+  .command('decode [target]', 'decode')
+  .parse(process.argv)
