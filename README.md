@@ -6,9 +6,18 @@ https://tools.ietf.org/html/rfc4648
 
 ## Usage
 
-```js
-import { encode, decode } from 'base32-hex'
+### CLI
 
-const encoded = encode('1a34ef794392')
-const decoded = decode('A3C7====')
+```console
+base32 encode 1234567890abcdef
+base32 decode CI2FM6EQVPG66===
+```
+
+### JavaScript
+
+```javascript
+const base32 = require('@januswel/base32')
+
+const encoded = base32.encode('1234567890abcdef')
+const decoded = base32.decode('CI2FM6EQVPG66===')
 ```
