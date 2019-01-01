@@ -1,9 +1,7 @@
-.babelrc
 .editorconfig
-.flowconfig
-.node-version
 .prettierrc
+.git
+.gitignore
 .yangpao.toml
 flow-typed
-src
-test
+node_modules
