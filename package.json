@@ -15,9 +15,9 @@
   "scripts": {
     "build": "NODE_ENV=production babel src -d dist && flow-copy-source src dist",
     "prebuild": "rm -rf dist",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "start": "bin/base32",
-    "test": "npm run type-check && mocha --require @babel/register test",
+    "test": "mocha --require @babel/register test",
     "type-check": "flow"
   },
   "dependencies": {
