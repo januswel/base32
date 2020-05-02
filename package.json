@@ -15,27 +15,27 @@
   "scripts": {
     "build": "NODE_ENV=production babel src -d dist && flow-copy-source src dist",
     "prebuild": "rm -rf dist",
-    "prepare": "npm run build",
+    "prepare": "yarn build",
     "start": "bin/base32",
-    "test": "npm run type-check && mocha --require @babel/register test",
+    "test": "mocha --require @babel/register test",
     "type-check": "flow"
   },
   "dependencies": {
     "commander": "2.19.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.2.3",
-    "@babel/preset-flow": "7.0.0",
-    "@babel/register": "7.0.0",
-    "babel-plugin-unassert": "2.1.2",
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-flow": "7.9.0",
+    "@babel/register": "7.9.0",
+    "babel-plugin-unassert": "3.0.1",
     "babel-preset-power-assert": "3.0.0",
-    "flow-bin": "0.89.0",
-    "flow-copy-source": "2.0.2",
-    "flow-typed": "2.5.1",
-    "mocha": "5.2.0",
+    "flow-bin": "0.123.0",
+    "flow-copy-source": "2.0.9",
+    "flow-typed": "3.1.0",
+    "mocha": "7.1.2",
     "power-assert": "1.6.1",
-    "prettier": "1.15.3"
+    "prettier": "2.0.5"
   }
 }
