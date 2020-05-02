@@ -24,11 +24,11 @@
     "commander": "2.19.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.2.3",
-    "@babel/preset-flow": "7.0.0",
-    "@babel/register": "7.0.0",
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-flow": "7.9.0",
+    "@babel/register": "7.9.0",
     "babel-plugin-unassert": "2.1.2",
     "babel-preset-power-assert": "3.0.0",
     "flow-bin": "0.89.0",
