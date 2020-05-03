@@ -13,7 +13,7 @@
     "base32": "bin/base32"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
     "prebuild": "rm -rf dist",
     "prepare": "yarn build",
     "start": "bin/base32",
