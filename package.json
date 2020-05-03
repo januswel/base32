@@ -13,29 +13,21 @@
     "base32": "bin/base32"
   },
   "scripts": {
-    "build": "NODE_ENV=production babel src -d dist && flow-copy-source src dist",
+    "build": "tsc",
     "prebuild": "rm -rf dist",
     "prepare": "yarn build",
     "start": "bin/base32",
-    "test": "mocha --require @babel/register test",
-    "type-check": "flow"
+    "test": "jest",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "commander": "^5.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.4",
-    "@babel/core": "7.9.6",
-    "@babel/preset-env": "7.9.6",
-    "@babel/preset-flow": "7.9.0",
-    "@babel/register": "7.9.0",
-    "babel-plugin-unassert": "3.0.1",
-    "babel-preset-power-assert": "3.0.0",
-    "flow-bin": "0.123.0",
-    "flow-copy-source": "2.0.9",
-    "flow-typed": "3.1.0",
-    "mocha": "7.1.2",
-    "power-assert": "1.6.1",
-    "prettier": "2.0.5"
+    "@types/jest": "25.2.1",
+    "jest": "25.5.4",
+    "prettier": "2.0.5",
+    "ts-jest": "25.4.0",
+    "typescript": "3.8.3"
   }
 }

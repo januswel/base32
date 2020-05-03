@@ -1,8 +1,5 @@
-// @flow
-
-import assert from 'assert'
+import { assert } from './assert'
 import { shiftLeft, shiftRight } from './bit-shift'
-import type { HexString, Base32String } from './types.flow.js'
 
 /**
  * '9a': 8bit
@@ -14,7 +11,7 @@ const ENCODING_UNIT = CHUNK_SIZE / 2
 const PADDING_CHARACTER = '='
 const BIT_MASK = 0b11111
 
-const encodeChunk = (chunk: HexString) => {
+function encodeChunk(chunk: string): string {
   const encoded = []
   const shiftWidth = (CHUNK_SIZE - chunk.length) * 4
   const numofPadded = Math.floor(shiftWidth / ENCODING_UNIT)
@@ -29,11 +26,8 @@ const encodeChunk = (chunk: HexString) => {
   return encoded.join('')
 }
 
-const encode = (src: HexString): Base32String => {
-  assert(
-    src.length % 2 === 0 && /^[0-9a-fA-F]+$/.test(src),
-    'src must be a hex string',
-  )
+export function encode(src: string): string {
+  assert(src.length % 2 === 0 && /^[0-9a-fA-F]+$/.test(src), 'src must be a hex string')
 
   const numofChunks = Math.ceil(src.length / CHUNK_SIZE)
   const fractions = src.length % CHUNK_SIZE
@@ -42,14 +36,9 @@ const encode = (src: HexString): Base32String => {
   const encoded = []
   for (let i = 0; i < numofChunks; ++i) {
     const start = i * CHUNK_SIZE
-    const chunk = src.slice(
-      start,
-      i === numofChunks - 1 ? start + numofCharactersLast : start + CHUNK_SIZE,
-    )
+    const chunk = src.slice(start, i === numofChunks - 1 ? start + numofCharactersLast : start + CHUNK_SIZE)
 
     encoded.push(encodeChunk(chunk))
   }
   return encoded.join('')
 }
-
-export default encode

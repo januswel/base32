@@ -1,28 +1,28 @@
-// @flow
-
-import assert from 'assert'
-import { shiftLeft, shiftRight } from './bit-shift'
-import type { HexString, Base32String } from './types.flow.js'
+import { assert } from './assert'
+import { shiftLeft } from './bit-shift'
 
 const CHUNK_SIZE = 8
 const TABLE = (() => {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'.split('')
-  const table = {}
+  const table = new Map()
   characters.forEach((character, index) => {
-    table[character] = index
+    table.set(character, index)
   })
   return table
 })()
 const PADDING_CHARACTER = '='
 
-const decodeChunk = (chunk: Base32String) => {
+function decodeChunk(chunk: string): string {
   let numofPaddingCharacters = 0
   const n = chunk.split('').reduce((sum, character, index) => {
     if (character === PADDING_CHARACTER) {
       ++numofPaddingCharacters
       return sum
     }
-    const current = TABLE[character]
+    if (!TABLE.has(character)) {
+      throw new Error(`unexpected character: ${character}`)
+    }
+    const current = TABLE.get(character)
     sum += shiftLeft(current, (7 - index) * 5)
     return sum
   }, 0)
@@ -39,11 +39,8 @@ const decodeChunk = (chunk: Base32String) => {
   return n.toString(16).slice(0, digits * 2)
 }
 
-const decode = (src: Base32String): HexString => {
-  assert(
-    src.length % 8 === 0 && /^[2-7A-Z]+=*$/.test(src),
-    'src must be a Base32 string',
-  )
+export function decode(src: string): string {
+  assert(src.length % 8 === 0 && /^[2-7A-Z]+=*$/.test(src), 'src must be a Base32 string')
 
   const numofChunks = src.length / CHUNK_SIZE
 
@@ -56,4 +53,3 @@ const decode = (src: Base32String): HexString => {
   }
   return decoded.join('')
 }
-export default decode
