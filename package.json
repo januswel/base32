@@ -21,7 +21,7 @@
     "type-check": "flow"
   },
   "dependencies": {
-    "commander": "2.19.0"
+    "commander": "^5.1.0"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",

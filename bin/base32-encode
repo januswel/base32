@@ -11,6 +11,6 @@ program
       console.error('Specify encoded string')
       return
     }
-    console.log(encode(target))
+    console.log(encode(target.args[0]))
   })
   .parse(process.argv)

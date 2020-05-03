@@ -11,6 +11,6 @@ program
       console.error('Specify decoded string')
       return
     }
-    console.log(decode(target))
+    console.log(decode(target.args[0]))
   })
   .parse(process.argv)
