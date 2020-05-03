@@ -2,7 +2,7 @@
 
 const program = require('commander')
 const version = require('../package.json').version
-const encode = require('../dist/encode').default
+const { encode } = require('../dist')
 
 program
   .version(version, '-v, --version')

@@ -7,6 +7,8 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'base32',
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
