@@ -1,7 +1,3 @@
-.editorconfig
-.prettierrc
 .git
-.gitignore
 .yangpao.toml
-flow-typed
 node_modules
