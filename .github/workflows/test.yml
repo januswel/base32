@@ -2,7 +2,7 @@
 name: test
 on: push
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout codes
@@ -24,7 +24,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - run: yarn --frozen-lockfile
-      - run: yarn test
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Run tests
+        run: yarn test
         env:
           CI: true
