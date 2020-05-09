@@ -1,4 +1,4 @@
-# hex to/from Base32 v1.0.1
+# hex to/from Base32 v1.0.1 ![test badge](https://github.com/januswel/base32/workflows/test/badge.svg)
 
 compliant with [RFC4648](https://tools.ietf.org/html/rfc4648)
 
