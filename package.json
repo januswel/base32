@@ -18,6 +18,7 @@
     "prepublishOnly": "yarn build",
     "start": "bin/base32",
     "test": "jest",
+    "coverage": "jest --coverage",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
