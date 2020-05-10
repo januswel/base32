@@ -15,7 +15,7 @@
   "scripts": {
     "build": "webpack",
     "prebuild": "rm -rf dist",
-    "prepare": "yarn build",
+    "prepublishOnly": "yarn build",
     "start": "bin/base32",
     "test": "jest",
     "type-check": "tsc --noEmit"
