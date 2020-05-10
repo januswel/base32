@@ -32,6 +32,12 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run tests
-        run: yarn test
+        run: yarn coverage
         env:
           CI: true
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v1
+        with:
+          name: code-coverage-report
+          path: coverage
