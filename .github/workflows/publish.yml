@@ -1,8 +1,10 @@
 ---
-name: test
-on: push
+name: publish
+on:
+  push:
+    tags: v*
 jobs:
-  test:
+  publish:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -15,6 +17,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -31,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Run tests
-        run: yarn test
+      - name: Publish to npmjs
+        run: yarn publish --access public
         env:
-          CI: true
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
