@@ -2,7 +2,7 @@
   "name": "@januswel/base32",
   "description": "Base32 encoder/decoder for hex string",
   "author": "januswel <janus.wel.3@gmail.com>",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "repository": {
     "type": "git",
